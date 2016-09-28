@@ -1,0 +1,46 @@
+public class Main {
+    public static void main(String[] args) {
+
+        WebDriver driver = new FirefoxDriver();
+
+        driver.navigate().to("http://bing.com");
+
+        By inputLocator = By.name("q"); // name - элемета поиска на странице
+        WebElement input = driver.findElement(inputLocator);
+
+
+        input.sendKeys("automation"); //передали данные
+        input.submit(); // эмуляция нажатия кнопки
+
+
+
+        WebDriverWait vait = new WebDriverWait(driver, 5);
+        vait.until { new ExpectedCondition<Boolean>() 
+             {
+                public Boolean apply (WebDriver vebDriver)
+                 {
+                 return vebDriver.gerTitle().contains("automation");
+                    }
+                 }
+             }
+        
+        String title = driver.getTitle();
+        System.out.println("Page title is: "+ title); // вывод в консоль заголовка страницы после передачи данных ("automation") в поле ввода
+
+   // попытка получить доступ к заголовкам страницы.    
+         
+        var element = driver.findElement(By.className("b_title")).findElement(By.tagName("a"));
+
+
+         for (var i = 0, cnt = elems.length; i < cnt; i++) 
+           {
+            System.out.println(elems[i]);
+               }
+
+ driver.quit();
+
+    }
+
+
+
+  }
